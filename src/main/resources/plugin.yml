@@ -1,0 +1,40 @@
+name: Zapisy
+version: '1.0.0'
+main: pl.zapisy.ZapisyPlugin
+api-version: '26.2'
+description: Lista zapisanych graczy (/zapisz, /wypisz, /zapisani)
+
+commands:
+  zapisz:
+    description: Zapisuje Cię na listę
+    usage: /zapisz
+    permission: zapisy.zapisz
+    permission-message: "§cNie masz uprawnień do tej komendy."
+  wypisz:
+    description: Wypisuje Cię z listy
+    usage: /wypisz
+    permission: zapisy.wypisz
+    permission-message: "§cNie masz uprawnień do tej komendy."
+  zapisani:
+    description: Pokazuje wszystkich zapisanych graczy
+    usage: /zapisani
+    permission: zapisy.zapisani
+    permission-message: "§cNie masz uprawnień do tej komendy."
+
+permissions:
+  zapisy.zapisz:
+    description: Pozwala użyć /zapisz
+    default: false
+  zapisy.wypisz:
+    description: Pozwala użyć /wypisz
+    default: false
+  zapisy.zapisani:
+    description: Pozwala użyć /zapisani
+    default: false
+  zapisy.*:
+    description: Wszystkie uprawnienia pluginu Zapisy
+    default: false
+    children:
+      zapisy.zapisz: true
+      zapisy.wypisz: true
+      zapisy.zapisani: true
