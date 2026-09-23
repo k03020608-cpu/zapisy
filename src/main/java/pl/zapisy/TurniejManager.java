@@ -1,8 +1,3 @@
-bash
-
-cat /home/claude/Zapisy_v2/src/main/java/pl/zapisy/TurniejManager.java
-Output
-
 package pl.zapisy;
 
 import org.bukkit.configuration.ConfigurationSection;
