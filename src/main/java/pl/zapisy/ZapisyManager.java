@@ -13,10 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Przechowuje listę zapisanych graczy (UUID -> ostatnio znany nick)
- * i zapisuje ją do pliku data.yml, żeby przetrwała restart serwera.
- */
 public final class ZapisyManager {
 
     private final JavaPlugin plugin;
@@ -61,7 +57,6 @@ public final class ZapisyManager {
         }
     }
 
-    /** @return true, jeśli gracz został dopisany; false, jeśli już był na liście. */
     public boolean add(Player player) {
         if (signedUp.containsKey(player.getUniqueId())) {
             return false;
@@ -71,7 +66,6 @@ public final class ZapisyManager {
         return true;
     }
 
-    /** @return true, jeśli gracz został usunięty; false, jeśli go nie było na liście. */
     public boolean remove(Player player) {
         if (signedUp.remove(player.getUniqueId()) == null) {
             return false;
@@ -86,5 +80,19 @@ public final class ZapisyManager {
 
     public int size() {
         return signedUp.size();
+    }
+
+    public void clear() {
+        signedUp.clear();
+        save();
+    }
+
+    public boolean isOpen() {
+        return plugin.getConfig().getBoolean("signups-open", true);
+    }
+
+    public void setOpen(boolean open) {
+        plugin.getConfig().set("signups-open", open);
+        plugin.saveConfig();
     }
 }
